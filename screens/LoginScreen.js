@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Modal} from 'react-native'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Modal, KeyBoardAvoidingView, ScrollView} from 'react-native'
 import db from '../config';
 import firebase from 'firebase';
 
@@ -13,7 +13,7 @@ export default class LoginScreen extends Component{
             lastName:'',
             address:'',
             confirmPassword:'',
-            isModalVisible:'false'
+            isModalVisible:'false',
             itemValue:"", 
             currencyCode:"",
         }
@@ -43,6 +43,7 @@ export default class LoginScreen extends Component{
               contact:this.state.contact,
               email_id:this.state.emailId,
               address:this.state.address,
+              currency_code:this.state.currencyCode,
             })
             return  Alert.alert(
                  'User Added Successfully',
