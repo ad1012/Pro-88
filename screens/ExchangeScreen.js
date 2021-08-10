@@ -15,7 +15,8 @@ export default class ExchangeScreen extends Component {
       requestedItemName:"",
       exchangeId:"",
       itemStatus:"",
-      docId: ""
+      docId: "",
+      "item_value" : this.state.itemValue
 
     }
   }
