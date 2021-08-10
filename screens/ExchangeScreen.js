@@ -50,6 +50,7 @@ export default class ExchangeScreen extends Component {
  })
      this.setState({
        itemName : '',
+       item value,
        description :''
      })
      return Alert.alert(
@@ -71,6 +72,7 @@ export default class ExchangeScreen extends Component {
     .onSnapshot(querySnapshot => {
       querySnapshot.forEach(doc => {
         this.setState({
+          currencyCode: doc.data().currency_code,
           IsExchangeRequestActive:doc.data().IsExchangeRequestActive,
           userDocId : doc.id
         })
@@ -86,6 +88,7 @@ export default class ExchangeScreen extends Component {
       snapshot.forEach((doc)=>{
         if(doc.data().item_status !== "received"){
           this.setState({
+            itemValue : doc.data().item_value,
             exchangeId : doc.data().exchangeId,
             requestedItemName: doc.data().item_name,
             itemStatus:doc.data().item_status,
