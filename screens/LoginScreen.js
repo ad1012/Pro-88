@@ -14,6 +14,8 @@ export default class LoginScreen extends Component{
             address:'',
             confirmPassword:'',
             isModalVisible:'false'
+            itemValue:"", 
+            currencyCode:"",
         }
     }
     
