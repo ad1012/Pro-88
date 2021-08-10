@@ -283,11 +283,6 @@ const styles = StyleSheet.create({
       buttonContainer:{
         flex:1
       },
-      KeyboardAvoidingView:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
-      },
       modalTitle :{
         justifyContent:'center',
         alignSelf:'center',
