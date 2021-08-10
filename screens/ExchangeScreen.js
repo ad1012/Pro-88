@@ -16,7 +16,8 @@ export default class ExchangeScreen extends Component {
       exchangeId:"",
       itemStatus:"",
       docId: "",
-      "item_value" : this.state.itemValue
+      itemValue: "",
+      currenctCode: "",
 
     }
   }
@@ -25,7 +26,7 @@ export default class ExchangeScreen extends Component {
     return Math.random().toString(36).substring(7);
   }
 
-  addItem= async(itemName, description)=>{
+  addItem = async(itemName, description)=>{
     var userName = this.state.userName
     exchangeId = this.createUniqueId()
     db.collection("exchange_requests").add({
@@ -50,7 +51,7 @@ export default class ExchangeScreen extends Component {
  })
      this.setState({
        itemName : '',
-       item value,
+       itemValue: '',
        description :''
      })
      return Alert.alert(
@@ -87,6 +88,7 @@ export default class ExchangeScreen extends Component {
     .then((snapshot)=>{
       snapshot.forEach((doc)=>{
         if(doc.data().item_status !== "received"){
+          this.done
           this.setState({
             itemValue : doc.data().item_value,
             exchangeId : doc.data().exchangeId,
@@ -118,12 +120,12 @@ getData(){
   }
 
 
-  receivedItem=(bookName)=>{
+  receivedItem=(itemName)=>{
     var userId = this.state.userName
     var exchangeId = this.state.exchangeId
     db.collection('received_items').add({
-        "user_id": userId,
-        "item_name":itemName,
+        "user_id" : userId,
+        "item_name" : itemName,
         "exchange_id"  : exchangeId,
         "itemStatus"  : "received",
 
