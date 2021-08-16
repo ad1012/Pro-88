@@ -3,13 +3,12 @@ import {StyleSheet, View, Text,TouchableOpacity, ImageBackground} from 'react-na
 import { DrawerItems} from 'react-navigation-drawer'
 import {Avatar} from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
-import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import db from '../config'
 
 export default class CustomSideBarMenu extends Component{
   state = {
-      userId : firebase.auth().currentUser.email,
+     userId : firebase.auth().currentUser.email,
      image: null,
      name: "",
      docId : ""
@@ -22,8 +21,10 @@ export default class CustomSideBarMenu extends Component{
         aspect: [4, 3],
         quality: 1,
      });
-     console.log(uri);
-     if (!cancelled) {this. updateProfilePicture(uri);}
+     
+     if(!cancelled){
+     this.uploadImage(uri, this.state.userId); 
+     }
    }
 
   uploadImage = async (uri,imageName) => {
@@ -44,12 +45,6 @@ export default class CustomSideBarMenu extends Component{
      this.setState({image:"#"})
    })
   }
-
-   updateProfilePicture=(uri)=>{
-     db.collection('users').doc(this.state.docId).update({
-       image : uri
-     })
-   }
 
    getUserProfile(){
      db.collection('users')
