@@ -1,7 +1,8 @@
 import React, { Component} from 'react';
-import {StyleSheet, View, Text,TouchableOpacity, ImageBackground} from 'react-native';
+import {StyleSheet, View, Text,TouchableOpacity, ImageBackground, Platform} from 'react-native';
 import { DrawerItems} from 'react-navigation-drawer'
-import {Avatar} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
+import * as Permissions from "expo-permissions";
 import * as ImagePicker from 'expo-image-picker';
 import firebase from 'firebase';
 import db from '../config'
